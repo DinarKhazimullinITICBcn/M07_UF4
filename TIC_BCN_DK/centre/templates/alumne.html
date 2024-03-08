@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnes</title>
+</head>
+<body>
+    <h2>INFORMACIO ALUMNES TIC BARCELONA</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOM</th>
+            <th>COGNOM</th>
+            <th>EDAT</th>
+            <th>ROL</th>
+            <th>CURS</th>
+        </tr>
+        {% for alumn in alumne %}
+        <tr>
+            <td>{{ alumn.id }}</td>
+            <td>{{ alumn.nom }}</td>
+            <td>{{ alumn.cognom }}</td>
+            <td>{{ alumn.edat }}</td>
+            <td>{{ alumn.rol }}</td>
+            <td>{{ alumn.curs }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
