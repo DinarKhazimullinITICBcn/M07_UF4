@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professors</title>
+</head>
+<body>
+    <h2>INFORMACIO PROFESSORAT TIC BARCELONA</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOM</th>
+            <th>COGNOM</th>
+            <th>EDAT</th>
+            <th>ROL</th>
+            <th>CURS</th>
+        </tr>
+        {% for prof in professor %}
+        <tr>
+            <td>{{ prof.id }}</td>
+            <td>{{ prof.nom }}</td>
+            <td>{{ prof.cognom }}</td>
+            <td>{{ prof.edat }}</td>
+            <td>{{ prof.rol }}</td>
+            <td>{{ prof.curs }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
