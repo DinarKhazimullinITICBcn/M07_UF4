@@ -3,18 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre</title>
+    <title>{% block title %}Centre{% endblock %}</title>
 </head>
 <body>
-    <p>Dades Professor</p>
+    <h1>Hola</h1>
     <div>
-        <label>Nom: </label> {{ nombre }}
-    </div>
-    <div>
-        <label>Cognom: </label> {{ surname }}
-    </div>
-    <div>
-        <label>Edat: </label> {{ age }}
+        {% block content %}{% endblock%}
     </div>
 </body>
 </html>
