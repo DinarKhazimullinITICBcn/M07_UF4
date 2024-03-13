@@ -41,25 +41,25 @@ def students(request):
             "id": 1,
             "nom":"Dinar",
             "cognom":"Khazimullin",
-            "correu": 39,
-            "curs":"teacher",
-            "rol":"DAM2B,DAW2A"
+            "correu": "2023_dinar.khazimullin@iticbcn.cat",
+            "curs":"DAW2A",
+            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
         },
         {    
             "id": 2,
-            "nom":"Josep Oriol",
-            "cognom":"Roca",
-            "edat":"25",
-            "rol":"teacher",
-            "curs":"DAM2B, DAW2A, DAW1A"
+            "nom":"Joel",
+            "cognom":"Ghanem",
+            "correu": "2023_joel.ghanem@iticbcn.cat",
+            "curs":"DAW2A",
+            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
         },
         {    
             "id": 3,
-            "nom":"Juanma",
-            "cognom":"Biel",
-            "edat":24,
-            "rol":"teacher",
-            "curs":"DAW2B, DAW2A"
+            "nom":"Junhong",
+            "cognom":"Zhu Zhang",
+            "correu": "2023_junhong.zhu@iticbcn.cat",
+            "curs":"DAW2A",
+            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
         },
     ]
     context = {'alumne':alumnes}
