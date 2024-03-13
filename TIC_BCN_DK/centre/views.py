@@ -43,7 +43,7 @@ def students(request):
             "cognom":"Khazimullin",
             "correu": "2023_dinar.khazimullin@iticbcn.cat",
             "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
+            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
         },
         {    
             "id": 2,
@@ -51,7 +51,7 @@ def students(request):
             "cognom":"Ghanem",
             "correu": "2023_joel.ghanem@iticbcn.cat",
             "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
+            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
         },
         {    
             "id": 3,
@@ -59,7 +59,7 @@ def students(request):
             "cognom":"Zhu Zhang",
             "correu": "2023_junhong.zhu@iticbcn.cat",
             "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client\nM7 Desenvolupament web en entorn servidor\nM8 Desplegament d'aplicacions web\nM9 Accessibilitat i usabilitat"
+            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
         },
     ]
     context = {'alumne':alumnes}

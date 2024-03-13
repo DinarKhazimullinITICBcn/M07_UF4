@@ -9,18 +9,18 @@
         <th>ID</th>
         <th>NOM</th>
         <th>COGNOM</th>
-        <th>EDAT</th>
-        <th>ROL</th>
+        <th>CORREU</th>
         <th>CURS</th>
+        <th>MODULS</th>
     </tr>
     {% for alumn in alumne %}
     <tr>
         <td>{{ alumn.id }}</td>
         <td>{{ alumn.nom }}</td>
         <td>{{ alumn.cognom }}</td>
-        <td>{{ alumn.edat }}</td>
-        <td>{{ alumn.rol }}</td>
+        <td>{{ alumn.correu }}</td>
         <td>{{ alumn.curs }}</td>
+        <td>{{ alumn.modul }}</td>
     </tr>
     {% endfor %}
 </table>
