@@ -1,6 +1,6 @@
 {% extends "index_centre.html" %}
 
-{% block title %}Llistat professorat{% endblock %}
+{% block title %}Alumne{% endblock %}
 
 {% block content %}
 <h2>INFORMACIO ALUMNES TIC BARCELONA</h2>
@@ -18,9 +18,7 @@
         <td>{{ alumn.id }}</td>
         <td>{{ alumn.nom }}</td>
         <td>{{ alumn.cognom }}</td>
-        <td>{{ alumn.correu }}</td>
-        <td>{{ alumn.curs }}</td>
-        <td>{{ alumn.modul }}</td>
+        <td><a href="{% url 'student' alumn.id %}">+ INFO</a></td>
     </tr>
     {% endfor %}
 </table>

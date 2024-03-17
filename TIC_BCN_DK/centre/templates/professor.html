@@ -1,0 +1,26 @@
+{% extends "index_centre.html" %}
+
+{% block title %}Professor{% endblock %}
+
+{% block content %}
+<h2>INFORMACIO PROFESSOR TIC BARCELONA</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NOM</th>
+        <th>COGNOM</th>
+        <th>CORREU</th>
+        <th>CURS</th>
+        <th>MODULS</th>
+    </tr>
+    <tr>
+        <td>{{ professor.id }}</td>
+        <td>{{ professor.nom }}</td>
+        <td>{{ professor.cognom }}</td>
+        <td>{{ professor.correu }}</td>
+        <td>{{ professor.curs }}</td>
+        <td>{{ professor.moduls }}</td>
+    </tr>
+</table>
+<a href="{% url 'teachers'%}">Go back</a>
+{% endblock %}

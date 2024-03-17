@@ -5,23 +5,22 @@
 {% block content %}
 <h2>INFORMACIO PROFESSORAT TIC BARCELONA</h2>
 <table>
-    <tr>
-        <th>ID</th>
-        <th>NOM</th>
-        <th>COGNOM</th>
-        <th>CORREU</th>
-        <th>CURS</th>
-        <th>MODULS</th>
-    </tr>
-    {% for prof in professor %}
-    <tr>
-        <td>{{ prof.id }}</td>
-        <td>{{ prof.nom }}</td>
-        <td>{{ prof.cognom }}</td>
-        <td>{{ prof.correu }}</td>
-        <td>{{ prof.curs }}</td>
-        <td>{{ prof.moduls }}</td>
-    </tr>
-    {% endfor %}
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prof in professor %}
+            <tr>
+                <td>{{ prof.id }}</td>
+                <td>{{ prof.nom }}</td>
+                <td>{{ prof.cognom }}</td>
+                <td><a href="{% url 'teacher' prof.id %}">+ INFO</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}
