@@ -9,3 +9,8 @@
 ![MakeMigrations](img/makemigrations.png)
 ### migrate
 ![migrate](img/migrate.png)
+## form
+### form amb as_p
+![form.as_p](img/form.as_p.png)
+### form sense as_p
+![form](img/form.png)

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, loader
 from django.shortcuts import render
-from 
+from .forms import PersonaForm
 
 def index(request):
     professor = {"name":"Roger","surname":"Sobrino","age":"17"}
@@ -129,3 +129,7 @@ def student(request, pk):
         if i['id'] == pk:
             alumne = i
     return render(request, 'alumn.html', {'alumne': alumne})
+def form(request):
+    form = PersonaForm()
+    context = {'form':form}
+    return render(request, 'form.html', context)
