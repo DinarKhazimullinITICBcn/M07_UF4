@@ -1,0 +1,12 @@
+{% extends "index_centre.html" %}
+
+{% block title %}Formulari{% endblock %}
+
+{% block content %}
+<h1>Registre usuari</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <input type="submit">
+</form>
+{% end block %}
