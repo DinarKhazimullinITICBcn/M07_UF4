@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.template import Context, loader
-from django.shortcuts import render
 from .models import Persona
 from .forms import PersonaForm
 
@@ -24,5 +23,16 @@ def student(request, pk):
     return render(request, 'alumn.html', {'alumne': alumne})
 def form(request):
     form = PersonaForm()
-    context = {'form':form}
+    if request.method == 'POST':
+        form = PersonaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            rol = form.cleaned_data.get('rol')
+            if rol == 'alumne' :
+                return redirect('students')
+            elif rol == 'professor' :
+                return redirect('teachers')
+            else :
+                return redirect('index')
+    context = {'form':form }
     return render(request, 'form.html', context)
