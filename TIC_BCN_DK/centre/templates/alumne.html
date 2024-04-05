@@ -16,6 +16,7 @@
         <td>{{ alumn.nom }}</td>
         <td>{{ alumn.cognom }}</td>
         <td><a href="{% url 'student' alumn.id %}">+ INFO</a></td>
+        <td><a href="{% url 'update_person' alumn.id %}">UPDATE</a></td>
     </tr>
     {% endfor %}
 </table>

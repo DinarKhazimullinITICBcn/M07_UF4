@@ -7,5 +7,6 @@ urlpatterns = [
     path('students/', views.students, name='students'),
     path('teachers/teacher/<int:pk>', views.teacher, name='teacher'),
     path('students/student/<int:pk>', views.student, name='student'),
-    path('form', views.form, name='form')
+    path('form', views.form, name='form'),
+    path('update-user/<int:pk>', views.update_person, name='update_person')
 ]

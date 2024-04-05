@@ -36,3 +36,20 @@ def form(request):
                 return redirect('index')
     context = {'form':form }
     return render(request, 'form.html', context)
+def update_person(request, pk):
+    persona = Persona.objects.get(id=pk)
+    form = PersonaForm(instance = persona)
+
+    if request.method == 'POST':
+        form = PersonaForm(request.POST, instance = persona)
+        if form.is_valid():
+            form.save()
+            rol = form.cleaned_data.get('rol')
+            if rol == 'alumne' :
+                return redirect('students')
+            elif rol == 'professor' :
+                return redirect('teachers')
+            else :
+                return redirect('index')
+    context = {'form':form }
+    return render(request, 'form.html', context)
