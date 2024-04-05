@@ -1,0 +1,18 @@
+{% extends 'index_centre.html' %}
+{% block content %}
+
+<h1>Formulari Eliminacio</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>Segur que vols eliminar aquest usuari amb nom "{{ persona.nom }}" ?</p>
+    {% if persona.rol == "professor" %}
+        <button><a href="{% url 'teachers' %}">Tornar</a></button>
+    {% elif persona.rol == "alumne" %}
+        <button><a href="{% url 'students' %}">Tornar</a></button>
+    {% else %}
+        <button><a href="{% url 'index' %}">Tornar</a></button>
+    {% endif %}
+    <input type="submit" value="CONFIRM" />
+</form>
+{% endblock %}

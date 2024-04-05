@@ -9,17 +9,17 @@
         <th>ID</th>
         <th>NOM</th>
         <th>COGNOM</th>
+        <th>EDAT</th>
         <th>CORREU</th>
-        <th>CURS</th>
         <th>MODULS</th>
     </tr>
     <tr>
         <td>{{ alumne.id }}</td>
         <td>{{ alumne.nom }}</td>
         <td>{{ alumne.cognom }}</td>
+        <td>{{ alumne.edat }}</td>
         <td>{{ alumne.correu }}</td>
-        <td>{{ alumne.curs }}</td>
-        <td>{{ alumne.modul }}</td>
+        <td>{{ alumne.moduls }}</td>
     </tr>
 </table>
 <a href="{% url 'students' %}">Go Back</a>

@@ -1,135 +1,70 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.template import Context, loader
-from django.shortcuts import render
+from .models import Persona
 from .forms import PersonaForm
 
 def index(request):
     professor = {"name":"Roger","surname":"Sobrino","age":"17"}
     return render(request, 'index_centre.html', {'nombre':professor['name'], 'surname':professor['surname'], 'age':professor["age"]})
 def teachers(request):
-    professors = [
-        {    
-            "id": 1,
-            "nom":"Roger",
-            "cognom":"Sobrino",
-            "correu":"roger.sobrino@iticbcn.cat",
-            "curs":"DAM2B,DAW2A",
-            "moduls":"M7 Desenvolupament web d'entorn servidor"
-        },
-        {    
-            "id": 2,
-            "nom":"Josep Oriol",
-            "cognom":"Roca",
-            "correu":"oriol.roca@iticbcn.cat",
-            "curs":"DAM2B,DAW2A, DAW1A",
-            "moduls":"M9 Accessibilitat i usabilitat, M6 Desenvolupament web en entorn client"
-        },
-        {    
-            "id": 3,
-            "nom":"Juanma",
-            "cognom":"Biel",
-            "correu":"juanma.sanchez@iticbcn.cat",
-            "curs":"DAW2A",
-            "moduls":"M6 Desenvolupament web en entorn client"
-        },
-    ]
+    professors = Persona.objects.filter(rol='professor')
     context = {'professor':professors}
     return render(request, 'prof.html', context)
 def students(request):
-    alumnes = [
-        {    
-            "id": 1,
-            "nom":"Dinar",
-            "cognom":"Khazimullin",
-            "correu": "2023_dinar.khazimullin@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-        {    
-            "id": 2,
-            "nom":"Joel",
-            "cognom":"Ghanem",
-            "correu": "2023_joel.ghanem@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-        {    
-            "id": 3,
-            "nom":"Junhong",
-            "cognom":"Zhu Zhang",
-            "correu": "2023_junhong.zhu@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-    ]
+    alumnes = Persona.objects.filter(rol='alumne')
     context = {'alumne':alumnes}
     return render(request, 'alumne.html', context)
 def teacher(request, pk):
-    professors = [
-        {    
-            "id": 1,
-            "nom":"Roger",
-            "cognom":"Sobrino",
-            "correu":"roger.sobrino@iticbcn.cat",
-            "curs":"DAM2B,DAW2A",
-            "moduls":"M7 Desenvolupament web d'entorn servidor"
-        },
-        {    
-            "id": 2,
-            "nom":"Josep Oriol",
-            "cognom":"Roca",
-            "correu":"oriol.roca@iticbcn.cat",
-            "curs":"DAM2B,DAW2A, DAW1A",
-            "moduls":"M9 Accessibilitat i usabilitat, M6 Desenvolupament web en entorn client"
-        },
-        {    
-            "id": 3,
-            "nom":"Juanma",
-            "cognom":"Biel",
-            "correu":"juanma.sanchez@iticbcn.cat",
-            "curs":"DAW2A",
-            "moduls":"M6 Desenvolupament web en entorn client"
-        },
-    ]
-    professor = None
-    for i in professors:
-        if i['id'] == pk:
-            professor = i
+    professor = Persona.objects.get(id=pk)
     return render(request, 'professor.html', {'professor': professor})
 def student(request, pk):
-    alumnes = [
-        {    
-            "id": 1,
-            "nom":"Dinar",
-            "cognom":"Khazimullin",
-            "correu": "2023_dinar.khazimullin@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-        {    
-            "id": 2,
-            "nom":"Joel",
-            "cognom":"Ghanem",
-            "correu": "2023_joel.ghanem@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-        {    
-            "id": 3,
-            "nom":"Junhong",
-            "cognom":"Zhu Zhang",
-            "correu": "2023_junhong.zhu@iticbcn.cat",
-            "curs":"DAW2A",
-            "modul":"M6 Desenvolupament web en entorn client M7 Desenvolupament web en entorn servidor M8 Desplegament d'aplicacions web M9 Accessibilitat i usabilitat"
-        },
-    ]
-    alumne = None
-    for i in alumnes:
-        if i['id'] == pk:
-            alumne = i
+    alumne = Persona.objects.get(id=pk)
     return render(request, 'alumn.html', {'alumne': alumne})
 def form(request):
     form = PersonaForm()
-    context = {'form':form}
+    if request.method == 'POST':
+        form = PersonaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            rol = form.cleaned_data.get('rol')
+            if rol == 'alumne' :
+                return redirect('students')
+            elif rol == 'professor' :
+                return redirect('teachers')
+            else :
+                return redirect('index')
+    context = {'form':form }
     return render(request, 'form.html', context)
+def update_person(request, pk):
+    persona = Persona.objects.get(id=pk)
+    form = PersonaForm(instance = persona)
+
+    if request.method == 'POST':
+        form = PersonaForm(request.POST, instance = persona)
+        if form.is_valid():
+            form.save()
+            rol = form.cleaned_data.get('rol')
+            if rol == 'alumne' :
+                return redirect('students')
+            elif rol == 'professor' :
+                return redirect('teachers')
+            else :
+                return redirect('index')
+    context = {'form':form }
+    return render(request, 'form.html', context)
+def delete_person(request, pk):
+    persona = Persona.objects.get(id=pk)
+
+    if request.method == 'POST':
+        persona.delete()
+        rol = persona.rol
+        if rol == 'alumne' :
+            return redirect('students')
+        elif rol == 'professor' :
+            return redirect('teachers')
+        else :
+            return redirect('index')
+    
+    context = { 'persona':persona }
+    return render(request, 'delete_persona.html', context)
