@@ -20,6 +20,8 @@
                 <td>{{ prof.cognom }}</td>
                 <td><a href="{% url 'teacher' prof.id %}">+ INFO</a></td>
                 <td><a href="{% url 'update_person' prof.id %}">UPDATE</a></td>
+                <td><a href="{%url 'delete_person' prof.id %}">DELETE</a></td>
+
             </tr>
         {% endfor %}
     </tbody>

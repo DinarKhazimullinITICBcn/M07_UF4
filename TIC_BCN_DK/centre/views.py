@@ -53,3 +53,18 @@ def update_person(request, pk):
                 return redirect('index')
     context = {'form':form }
     return render(request, 'form.html', context)
+def delete_person(request, pk):
+    persona = Persona.objects.get(id=pk)
+
+    if request.method == 'POST':
+        persona.delete()
+        rol = persona.rol
+        if rol == 'alumne' :
+            return redirect('students')
+        elif rol == 'professor' :
+            return redirect('teachers')
+        else :
+            return redirect('index')
+    
+    context = { 'persona':persona }
+    return render(request, 'delete_persona.html', context)
